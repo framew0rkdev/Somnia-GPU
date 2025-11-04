@@ -3,10 +3,15 @@
 ## Production Deployment
 
 **Landing Page**: https://somnia-router.vercel.app
+
 **Application Interface**: https://somnia-router.vercel.app/app
+
 **Backend API**: https://somnia-gpu-api-6e910df44575.herokuapp.com
+
 **Smart Contract Address**: `0xa3e3f9Bd08141fA2B57a82539d550781fDbbFBcD`
+
 **Network**: Somnia Testnet (Chain ID: 50312 / 0xc488)
+
 **Block Explorer**: https://explorer-testnet.somnia.network/address/0xa3e3f9Bd08141fA2B57a82539d550781fDbbFBcD
 
 ## What is Somnia GPU
