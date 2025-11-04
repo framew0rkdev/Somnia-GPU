@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Somnia GPU</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <script src="ethers.min.js"></script>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
+                        <rect width="40" height="40" rx="8" fill="url(#gradient)"/>
+                        <path d="M20 10L30 20L20 30L10 20L20 10Z" fill="white" opacity="0.9"/>
+                        <defs>
+                            <linearGradient id="gradient" x1="0" y1="0" x2="40" y2="40">
+                                <stop offset="0%" stop-color="#6366f1"/>
+                                <stop offset="100%" stop-color="#8b5cf6"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <button id="connect-btn" class="connect-button">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                        <rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor" stroke-width="2"/>
+                        <path d="M7 11V7C7 4.79086 8.79086 3 11 3H13C15.2091 3 17 4.79086 17 7V11" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                    <span>Connect</span>
+                </button>
+            </div>
+
+            <div id="wallet-connected" class="wallet-info" style="display:none;">
+                <div class="wallet-address">
+                    <span id="wallet-address-text"></span>
+                </div>
+                <div class="credits-panel">
+                    <div class="credits-label">Credits</div>
+                    <div class="credits-amount" id="credit-amount">0</div>
+                    <button id="buy-credits-btn" class="buy-button">Buy Credits</button>
+                </div>
+                <button id="disconnect-btn" class="disconnect-button">Disconnect</button>
+            </div>
+
+            <div class="models-section">
+                <div class="section-title">AI Models</div>
+                <div id="models-list" class="models-list"></div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="chat-header">
+                <h2 id="current-model-name">Select a model to start</h2>
+                <div class="header-actions">
+                    <button class="icon-button" title="Clear chat">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                            <path d="M3 6H21M8 6V4C8 2.89543 8.89543 2 10 2H14C15.1046 2 16 2.89543 16 4V6M19 6V20C19 21.1046 18.1046 22 17 22H7C5.89543 22 5 21.1046 5 20V6H19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div id="chat-container" class="chat-container">
+                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: var(--text-secondary); text-align: center; padding: 40px;">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" style="margin-bottom: 16px; opacity: 0.5;">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <p style="font-size: 14px; margin-bottom: 8px;">Welcome to Somnia GPU</p>
+                    <p style="font-size: 12px; opacity: 0.7;">Connect your wallet and select a model to start chatting</p>
+                </div>
+            </div>
+
+            <div class="chat-input-wrapper">
+                <div class="chat-input">
+                    <textarea id="message-input" placeholder="Connect wallet and select model to chat..." rows="1" disabled></textarea>
+                    <button id="send-btn" class="send-button" disabled>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="buy-modal" class="modal" style="display:none;">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Purchase Credits</h3>
+                <button class="modal-close" id="cancel-buy-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p class="exchange-rate">1 STT = 1,000 Credits</p>
+                <div class="input-group">
+                    <label>Amount (STT)</label>
+                    <input type="number" id="stt-amount" value="0.01" step="0.01" min="0.01">
+                </div>
+                <button id="confirm-buy-btn" class="primary-button">
+                    Purchase Credits
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Wait for ethers to load before loading app.js
+        window.addEventListener('load', function() {
+            if (typeof ethers === 'undefined') {
+                console.error('ethers.js failed to load!');
+                alert('Failed to load required libraries. Please refresh the page.');
+            } else {
+                console.log('ethers.js loaded successfully');
+            }
+        });
+    </script>
+    <script src="app.js"></script>
+</body>
+</html>

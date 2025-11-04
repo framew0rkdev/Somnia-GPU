@@ -1,0 +1,320 @@
+@import url('https://fonts.googleapis.com/css2?family=Lego&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Futura', 'Century Gothic', Arial, sans-serif;
+    background: #F4F4F4;
+    overflow-x: hidden;
+}
+
+.baseplate {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 0% 0%, #88D66C 0%, transparent 50%),
+        radial-gradient(circle at 100% 100%, #FFD23F 0%, transparent 50%),
+        #F4F4F4;
+    position: relative;
+    padding: 40px 20px;
+}
+
+.baseplate::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 31px, rgba(0,0,0,0.03) 31px, rgba(0,0,0,0.03) 32px),
+        repeating-linear-gradient(90deg, transparent, transparent 31px, rgba(0,0,0,0.03) 31px, rgba(0,0,0,0.03) 32px);
+    background-size: 32px 32px;
+    pointer-events: none;
+}
+
+.construction-scene {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.big-logo-brick {
+    background:
+        linear-gradient(135deg, #DE1F28 0%, #DE1F28 45%, #B81820 50%, #8B1419 100%);
+    border-radius: 8px;
+    padding: 80px 60px 60px;
+    margin-bottom: 60px;
+    position: relative;
+    box-shadow:
+        0 2px 0 rgba(0,0,0,0.1),
+        0 4px 0 rgba(0,0,0,0.1),
+        0 8px 0 rgba(0,0,0,0.15),
+        0 12px 0 rgba(0,0,0,0.15),
+        0 16px 0 rgba(0,0,0,0.2),
+        0 20px 40px rgba(0,0,0,0.3);
+    text-align: center;
+    transform-style: preserve-3d;
+    animation: brickFloat 6s ease-in-out infinite;
+}
+
+@keyframes brickFloat {
+    0%, 100% { transform: translateY(0px) rotateX(2deg); }
+    50% { transform: translateY(-10px) rotateX(-2deg); }
+}
+
+.brick-studs {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    z-index: 10;
+}
+
+.brick-studs.large {
+    gap: 25px;
+}
+
+.brick-studs.mega {
+    gap: 18px;
+}
+
+.stud {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8), currentColor 40%, rgba(0,0,0,0.4));
+    border: 3px solid rgba(0,0,0,0.2);
+    box-shadow:
+        0 4px 8px rgba(0,0,0,0.3),
+        inset 0 2px 4px rgba(255,255,255,0.5),
+        inset 0 -2px 4px rgba(0,0,0,0.3);
+    color: inherit;
+    position: relative;
+}
+
+.stud::after {
+    content: 'LEGO';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 6px;
+    font-weight: bold;
+    color: rgba(0,0,0,0.3);
+    letter-spacing: -0.5px;
+}
+
+.big-logo-brick h1 {
+    font-size: 5rem;
+    font-weight: 900;
+    color: white;
+    text-shadow:
+        3px 3px 0 rgba(0,0,0,0.3),
+        6px 6px 0 rgba(0,0,0,0.2);
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.tagline {
+    font-size: 1.8rem;
+    color: #FFD23F;
+    font-weight: 700;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+    letter-spacing: 0.05em;
+}
+
+.features-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.feature-brick {
+    position: relative;
+    padding: 70px 30px 40px;
+    border-radius: 8px;
+    box-shadow:
+        0 2px 0 rgba(0,0,0,0.1),
+        0 6px 0 rgba(0,0,0,0.1),
+        0 12px 0 rgba(0,0,0,0.15),
+        0 18px 40px rgba(0,0,0,0.25);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+}
+
+.feature-brick:hover {
+    transform: translateY(-8px) rotateX(5deg);
+    box-shadow:
+        0 4px 0 rgba(0,0,0,0.1),
+        0 10px 0 rgba(0,0,0,0.1),
+        0 18px 0 rgba(0,0,0,0.15),
+        0 26px 60px rgba(0,0,0,0.35);
+}
+
+.feature-brick.red {
+    background: linear-gradient(135deg, #DE1F28 0%, #DE1F28 45%, #B81820 50%, #8B1419 100%);
+    color: #DE1F28;
+}
+
+.feature-brick.yellow {
+    background: linear-gradient(135deg, #FFD23F 0%, #FFD23F 45%, #E6BD38 50%, #CCA630 100%);
+    color: #FFD23F;
+}
+
+.feature-brick.blue {
+    background: linear-gradient(135deg, #0055BF 0%, #0055BF 45%, #004494 50%, #003370 100%);
+    color: #0055BF;
+}
+
+.feature-brick.green {
+    background: linear-gradient(135deg, #00A651 0%, #00A651 45%, #008741 50%, #006B34 100%);
+    color: #00A651;
+}
+
+.brick-face {
+    color: white;
+    text-align: center;
+}
+
+.brick-face h3 {
+    font-size: 1.8rem;
+    font-weight: 900;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+    letter-spacing: 0.05em;
+}
+
+.brick-face p {
+    font-size: 1.1rem;
+    opacity: 0.95;
+    line-height: 1.6;
+}
+
+.cta-section {
+    text-align: center;
+    margin: 80px 0 60px;
+}
+
+.mega-button {
+    position: relative;
+    background: linear-gradient(135deg, #00A651 0%, #00A651 45%, #008741 50%, #006B34 100%);
+    color: #00A651;
+    border: none;
+    border-radius: 12px;
+    padding: 80px 100px 60px;
+    font-size: 3rem;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow:
+        0 4px 0 rgba(0,0,0,0.1),
+        0 8px 0 rgba(0,0,0,0.1),
+        0 16px 0 rgba(0,0,0,0.15),
+        0 24px 0 rgba(0,0,0,0.2),
+        0 32px 60px rgba(0,0,0,0.4);
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transform-style: preserve-3d;
+}
+
+.mega-button span {
+    color: white;
+    text-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+}
+
+.mega-button:hover {
+    transform: translateY(-12px) scale(1.05);
+    box-shadow:
+        0 6px 0 rgba(0,0,0,0.1),
+        0 12px 0 rgba(0,0,0,0.1),
+        0 20px 0 rgba(0,0,0,0.15),
+        0 28px 0 rgba(0,0,0,0.2),
+        0 40px 80px rgba(0,0,0,0.5);
+}
+
+.mega-button:active {
+    transform: translateY(4px);
+    box-shadow:
+        0 2px 0 rgba(0,0,0,0.1),
+        0 4px 0 rgba(0,0,0,0.1),
+        0 8px 0 rgba(0,0,0,0.15),
+        0 12px 30px rgba(0,0,0,0.3);
+}
+
+.info-panel {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.panel-brick {
+    background: linear-gradient(135deg, #0055BF 0%, #0055BF 45%, #004494 50%, #003370 100%);
+    border-radius: 8px;
+    padding: 60px 50px 40px;
+    position: relative;
+    color: #0055BF;
+    box-shadow:
+        0 2px 0 rgba(0,0,0,0.1),
+        0 6px 0 rgba(0,0,0,0.1),
+        0 12px 0 rgba(0,0,0,0.15),
+        0 18px 40px rgba(0,0,0,0.25);
+}
+
+.panel-content {
+    color: white;
+}
+
+.panel-content h4 {
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 25px;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+    letter-spacing: 0.05em;
+}
+
+.panel-content ol {
+    margin: 0 0 30px 30px;
+    line-height: 2;
+    font-size: 1.2rem;
+}
+
+.panel-content li {
+    margin-bottom: 12px;
+}
+
+.footnote {
+    text-align: center;
+    opacity: 0.8;
+    font-size: 0.95rem;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid rgba(255,255,255,0.2);
+}
+
+@media (max-width: 768px) {
+    .big-logo-brick h1 {
+        font-size: 3rem;
+    }
+
+    .tagline {
+        font-size: 1.2rem;
+    }
+
+    .features-row {
+        grid-template-columns: 1fr;
+    }
+
+    .mega-button {
+        padding: 60px 50px 40px;
+        font-size: 2rem;
+    }
+}
