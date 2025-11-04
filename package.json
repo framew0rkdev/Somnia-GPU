@@ -1,0 +1,23 @@
+{
+  "name": "somnia-gpu",
+  "version": "1.0.0",
+  "description": "Decentralized AI Model Aggregator on Somnia Blockchain",
+  "scripts": {
+    "install:all": "cd frontend && npm install && cd ../backend && npm install && cd ../ai && npm install",
+    "dev:backend": "cd backend && node server.js",
+    "dev:frontend": "cd frontend && python3 -m http.server 8000",
+    "deploy:backend": "cd backend && git push heroku master",
+    "deploy:frontend": "vercel --prod",
+    "deploy:contract": "cd ai && npm run deploy"
+  },
+  "keywords": [
+    "somnia",
+    "ai",
+    "blockchain",
+    "web3",
+    "ethereum",
+    "smart-contracts"
+  ],
+  "author": "",
+  "license": "MIT"
+}
